@@ -12,6 +12,7 @@
                     <div class="alert alert-success">
                         {{session('status')}}
                     </div>
+                    @endif
                     <form method="POST" action="{{ route('admin.auth') }}">
                     @csrf
 
@@ -69,7 +70,9 @@
                             </div>
                         </div>
                     </form>
+                
                 </div>
+                
             </div>
         </div>
     </div>

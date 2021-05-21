@@ -17,12 +17,12 @@ class AdminRedirectIfAuthenticated
      * @param  string|null  ...$guards
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, ...$guards)
+    public function handle(Request $request, Closure $next, ...$guards )
     {
         
 
         
-            if (Auth::guard($guard)->check()) {
+            if (Auth::guard('admin')->check()) {
                 return redirect()->route('admin.home');
             }
         

@@ -9,15 +9,15 @@ use App\Models\Admin;
 class AdminController extends Controller
 {
     use AuthenticatesUsers;
-  //  public function login(Request $request){
+    //public function login(Request $request){
    // $credentials = $request->only('email','password');
 
    // if(Auth::guard('admin')->attempt($credentials,$request->remember)){
-   //     $user =Admin::where('email',$request->email)->first();
-  //      Auth::guard('admin')->login($user);
-   //     return redirect()->route('admin.home');
+      //  $user =Admin::where('email',$request->email)->first();
+       // Auth::guard('admin')->login($user);
+        //return redirect()->route('admin.home');
    // }
-  //  return redirect()->route('admin.login')->with('status','Failed to process Login');
+   // return redirect()->route('admin.login')->with('status','Failed to process Login');
 //}
 
 protected function authenticated(Request $request,$user){
@@ -33,13 +33,10 @@ public function logout(Request $request){
     :redirect('/');
 }
 protected function loggedOut(Request $request){
-    return redirect()->route('admin.login')
+    return redirect()->route('admin.login');
 }
 protected function guard(){
     return Auth::guard('admin');
 }
-protected function guard()
-{
-    return Auth::guard('admin');
-}
+
 }

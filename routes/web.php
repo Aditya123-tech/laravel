@@ -29,6 +29,6 @@ Route::group(['prefix'=>'admin'],function(){
     });
     Route::group(['middleware'=> 'admin.auth'],function(){
         Route::view('dashboard','admin.home')->name('admin.home');
-        Route::post('logout',[App\Http\Controllers\AdminController::class, 'logout'])->name('admin.logout')
+        Route::post('logout',[App\Http\Controllers\AdminController::class, 'logout'])->name('admin.logout');
     });
 });
