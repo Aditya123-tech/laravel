@@ -17,22 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//Route :: post("users",[userLogin:: class ,"getData"]);
-//Route :: view("login","users");
-//Route :: post("signup",[Usersignup:: class ,"signup"]);
-//Route :: view("signup","signup");
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['prefix'=>'admin'],function(){
-    Route::group(['middleware'=>'guest'],function(){
+    Route::group(['middleware'=>'admin.guest'],function(){
         Route::view('login', 'admin.login')->name('admin.login');
         Route::post('login', [App\Http\Controllers\AdminController::class, 'login'])->name('admin.auth');
     });
     Route::group(['middleware'=> 'admin.auth'],function(){
         Route::view('dashboard','admin.home')->name('admin.home');
-       // Route::post('logout',[App\Http\Controllers\AdminController::class, 'logout'])->name('admin.logout')
+        Route::post('logout',[App\Http\Controllers\AdminController::class, 'logout'])->name('admin.logout')
     });
 });

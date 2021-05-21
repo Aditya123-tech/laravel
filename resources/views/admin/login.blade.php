@@ -8,8 +8,12 @@
                 <div class="card-header">{{ __('Admin Login') }}</div>
 
                 <div class="card-body">
+                @if (session()->has ('status'))
+                    <div class="alert alert-success">
+                        {{session('status')}}
+                    </div>
                     <form method="POST" action="{{ route('admin.auth') }}">
-                        @csrf
+                    @csrf
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
